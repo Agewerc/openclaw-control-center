@@ -10,7 +10,7 @@ import { useDroppable } from '@dnd-kit/core'
 import { CSS } from '@dnd-kit/utilities'
 import {
   GripVertical, ChevronDown, ChevronUp, RefreshCw,
-  Zap, CheckCircle, Archive, ListChecks, Search, Filter,
+  Zap, CheckCircle, Archive, ListChecks, Search, Filter, CheckCircle2,
 } from 'lucide-react'
 
 type TaskStatus = 'planned' | 'in-progress' | 'verify' | 'done'
@@ -18,6 +18,12 @@ type Priority = 'critical' | 'high' | 'medium' | 'low'
 type Effort = 'xs' | 's' | 'm' | 'l' | 'xl'
 
 interface Subtask { text: string; done: boolean }
+
+interface CompletionNote {
+  agent: string
+  timestamp: string
+  note: string
+}
 
 interface Task {
   id: string
@@ -34,6 +40,7 @@ interface Task {
   agentNote?: string
   subtasks: Subtask[]
   added: string
+  completionNote?: CompletionNote
 }
 
 // ── Config ────────────────────────────────────────────────────────────────────
@@ -182,10 +189,24 @@ function TaskCard({ task, onSubtaskToggle }: {
           {task.dependsOn.length > 0 && (
             <p className="text-xs text-muted-foreground">Depends on: {task.dependsOn.join(', ')}</p>
           )}
-          {task.agentNote && (
+          {task.agentNote && !task.completionNote && (
             <div>
               <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-1">Agent note</p>
               <p className="text-sm text-foreground/70 italic">{task.agentNote}</p>
+            </div>
+          )}
+          {task.completionNote && (
+            <div className="border border-green-500/30 bg-green-500/5 rounded-lg px-3 py-2.5">
+              <div className="flex items-center gap-2 mb-1">
+                <CheckCircle2 size={13} className="text-green-400 shrink-0" />
+                <span className="text-xs font-semibold text-green-400">
+                  Completed by {task.completionNote.agent}
+                </span>
+                <span className="text-xs text-muted-foreground ml-auto">{task.completionNote.timestamp}</span>
+              </div>
+              <p className="text-xs text-foreground/80 leading-relaxed pl-5">
+                "{task.completionNote.note}"
+              </p>
             </div>
           )}
         </div>
@@ -246,16 +267,40 @@ export default function BoardPage() {
 
   async function load() {
     try {
-      const res = await fetch('/api/tasks')
-      const json = await res.json()
+      const [tasksRes, logsRes] = await Promise.all([
+        fetch('/api/tasks'),
+        fetch('/api/agent-logs?action=completed&limit=100'),
+      ])
+      const tasksJson = await tasksRes.json()
+      const logsJson  = await logsRes.json()
+
+      // Build a map of taskId → latest completion entry
+      const completionMap = new Map<string, CompletionNote>()
+      for (const entry of (logsJson.entries || [])) {
+        if (entry.taskId && !completionMap.has(entry.taskId)) {
+          completionMap.set(entry.taskId, {
+            agent: entry.agent,
+            timestamp: entry.timestamp,
+            note: entry.note,
+          })
+        }
+      }
+
+      // Attach completionNote to tasks
+      const enrich = (tasks: Task[]) =>
+        tasks.map(t => ({
+          ...t,
+          completionNote: completionMap.get(t.id),
+        }))
+
       setColumns({
-        planned: json.planned || [],
-        'in-progress': json.inProgress || [],
-        verify: json.verify || [],
-        done: json.done || [],
+        planned:       enrich(tasksJson.planned || []),
+        'in-progress': enrich(tasksJson.inProgress || []),
+        verify:        enrich(tasksJson.verify || []),
+        done:          enrich(tasksJson.done || []),
       })
-      setAllTasks(json.tasks || [])
-      setStats(json.stats || {})
+      setAllTasks(enrich(tasksJson.tasks || []))
+      setStats(tasksJson.stats || {})
     } catch { /* */ }
     finally { setLoading(false); setRefreshing(false) }
   }
