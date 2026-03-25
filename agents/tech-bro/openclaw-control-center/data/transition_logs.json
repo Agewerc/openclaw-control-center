@@ -1,0 +1,46 @@
+[
+  {
+    "id": "transition_1774426489289_zso5mq",
+    "entityType": "epic",
+    "entityId": "epic_personal-finance-tracker-mvp-trial_9088",
+    "epicId": "epic_personal-finance-tracker-mvp-trial_9088",
+    "fromStatus": "PM Review",
+    "toStatus": "In Delivery",
+    "actor": "pm-bro",
+    "note": "Moved epic from PM Review to In Delivery for first supervised trial.",
+    "timestamp": "2026-03-25T21:00:00.000Z"
+  },
+  {
+    "id": "transition_1774449720001_t001_review_done",
+    "entityType": "story",
+    "entityId": "T001",
+    "epicId": "epic_personal-finance-tracker-mvp-trial_9088",
+    "fromStatus": "Review",
+    "toStatus": "Done",
+    "actor": "pm-bro",
+    "note": "PM review complete. T001 is accepted as done. Ready for T002 to start.",
+    "timestamp": "2026-03-25T21:10:00.000Z"
+  },
+  {
+    "id": "transition_1774449720000_t001",
+    "entityType": "story",
+    "entityId": "T001",
+    "epicId": "epic_personal-finance-tracker-mvp-trial_9088",
+    "fromStatus": "In Progress",
+    "toStatus": "Review",
+    "actor": "tech-bro",
+    "note": "T001 data model complete. Artifacts: BRIEF.md, SCHEMA.md, migration.sql. Awaiting PM review before T002.",
+    "timestamp": "2026-03-25T20:02:00.000Z"
+  },
+  {
+    "id": "transition_1774455300000_t002",
+    "entityType": "story",
+    "entityId": "T002",
+    "epicId": "epic_personal-finance-tracker-mvp-trial_9088",
+    "fromStatus": "To Do",
+    "toStatus": "In Progress",
+    "actor": "tech-bro",
+    "note": "Starting T002: Build Snapshot Entry Flow. Will implement API routes for tracked items/snapshots and UI form for entering values with actual/estimated toggles.",
+    "timestamp": "2026-03-25T22:15:00.000Z"
+  }
+]
