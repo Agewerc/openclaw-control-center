@@ -1,0 +1,63 @@
+[
+  {
+    "id": "epic_personal-finance-tracker-mvp-trial_9088",
+    "title": "Personal Finance Tracker MVP (Trial)",
+    "rawIdea": "Track wealth evolution over time with a simple local tool, since Frollo shows the current picture but does not handle historical snapshots well enough.",
+    "status": "In Delivery",
+    "source": "discord",
+    "owner": "pm-bro",
+    "problemStatement": "Alan wants to track his net wealth evolution across assets and liabilities over time, but current tools such as Frollo do not provide the historical snapshot model he needs. The process also needs to stay lightweight enough to repeat consistently.",
+    "desiredOutcome": "A local private app where Alan can maintain a prepopulated list of tracked accounts/assets/liabilities, record timestamped snapshots, mark some values as estimated when needed, and view total net wealth, change vs prior snapshot, category breakdown, and trend over time.",
+    "scopeIn": [
+      "local-only MVP",
+      "separate app/module",
+      "prepopulated tracked-item list based on screenshots",
+      "lightly editable tracked-item list",
+      "manual snapshot entry",
+      "timestamped snapshots",
+      "explicit actual vs estimated values",
+      "dashboard/history page",
+      "category grouping"
+    ],
+    "scopeOut": [
+      "API integrations",
+      "Frollo syncing",
+      "reminders or routine automation",
+      "detailed transaction tracking",
+      "budgeting or spending analysis",
+      "cloud or shared access",
+      "main dashboard integration for MVP"
+    ],
+    "deliverables": [
+      "Tracked items setup/list page prepopulated from screenshots and editable",
+      "Snapshot entry flow with timestamped snapshots and estimated-value support",
+      "Dashboard/history page with total net wealth, delta vs previous snapshot, category breakdown, and trend over time"
+    ],
+    "successCriteria": [
+      "Alan can complete a snapshot update in about 10 minutes or less",
+      "The app clearly shows total net wealth",
+      "The app shows change vs the previous snapshot",
+      "The app shows category breakdown",
+      "The app shows historical trend",
+      "The process feels simple enough to repeat"
+    ],
+    "constraints": [
+      "local/private only for MVP",
+      "some values such as super may be estimated rather than always current",
+      "tracked item list should be seeded from screenshots already shared by Alan"
+    ],
+    "dependencies": [],
+    "labels": [
+      "Personal",
+      "trial",
+      "finance"
+    ],
+    "priority": "medium",
+    "previousStatus": "PM Review",
+    "pmNotes": "",
+    "alanNotes": "",
+    "finalSummary": "",
+    "createdAt": "2026-03-25T08:14:29.086Z",
+    "updatedAt": "2026-03-25T21:00:00.000Z"
+  }
+]

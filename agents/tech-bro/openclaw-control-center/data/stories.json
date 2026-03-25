@@ -1,0 +1,61 @@
+[
+  {
+    "id": "T001",
+    "epicId": "epic_personal-finance-tracker-mvp-trial_9088",
+    "title": "Define Data Model for Tracked Items and Snapshots",
+    "description": "Define the data structures for tracked financial items and timestamped snapshots, including fields for actual and estimated values.",
+    "acceptanceCriteria": [
+      "Data model supports all required fields",
+      "Supports multiple snapshot entries with timestamps",
+      "Documented and versioned schema"
+    ],
+    "assignedAgent": "tech-bro",
+    "status": "Done",
+    "order": 1,
+    "dependsOn": [],
+    "priority": "high",
+    "effort": "s",
+    "subtasks": [],
+    "startedAt": "2026-03-25T10:51:01.611Z",
+    "completedAt": "2026-03-25T20:02:00.000Z"
+  },
+  {
+    "id": "T002",
+    "epicId": "epic_personal-finance-tracker-mvp-trial_9088",
+    "title": "Build Snapshot Entry Flow",
+    "description": "Implement the UI and backend flow for users to enter timestamped snapshots with editable values.",
+    "acceptanceCriteria": [
+      "UI shows editable list of tracked items",
+      "Can create and save new snapshots",
+      "Estimated values toggle works per item"
+    ],
+    "assignedAgent": "tech-bro",
+    "status": "Review",
+    "order": 2,
+    "dependsOn": ["T001"],
+    "priority": "high",
+    "effort": "m",
+    "subtasks": [],
+    "startedAt": "2026-03-25T22:02:00.000Z",
+    "completedAt": "2026-03-25T22:42:00.000Z"
+  },
+  {
+    "id": "T003",
+    "epicId": "epic_personal-finance-tracker-mvp-trial_9088",
+    "title": "Build Dashboard and History View",
+    "description": "Build dashboard UI to show total net wealth, change vs prior snapshot, category breakdown, and trends.",
+    "acceptanceCriteria": [
+      "Dashboard shows accurate net worth",
+      "Change vs previous snapshot",
+      "Charts update dynamically",
+      "Mobile responsive"
+    ],
+    "assignedAgent": "tech-bro",
+    "status": "To Do",
+    "order": 3,
+    "dependsOn": ["T002"],
+    "priority": "high",
+    "effort": "l",
+    "subtasks": []
+  }
+]

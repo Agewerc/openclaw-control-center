@@ -1,0 +1,62 @@
+[
+  {
+    "id": "alan",
+    "name": "Alan",
+    "role": "final verification",
+    "active": true
+  },
+  {
+    "id": "joe",
+    "name": "Joe",
+    "role": "discovery and requirements",
+    "active": true
+  },
+  {
+    "id": "pm-bro",
+    "name": "PM Bro",
+    "role": "delivery planning and review",
+    "active": true
+  },
+  {
+    "id": "career-bro",
+    "name": "Career Bro",
+    "role": "specialist agent",
+    "active": true
+  },
+  {
+    "id": "finance-bro",
+    "name": "Finance Bro",
+    "role": "specialist agent",
+    "active": true
+  },
+  {
+    "id": "health-bro",
+    "name": "Health Bro",
+    "role": "specialist agent",
+    "active": true
+  },
+  {
+    "id": "main",
+    "name": "Main",
+    "role": "specialist agent",
+    "active": true
+  },
+  {
+    "id": "openclaw-bro",
+    "name": "Openclaw Bro",
+    "role": "specialist agent",
+    "active": true
+  },
+  {
+    "id": "research-bro",
+    "name": "Research Bro",
+    "role": "specialist agent",
+    "active": true
+  },
+  {
+    "id": "tech-bro",
+    "name": "Tech Bro",
+    "role": "specialist agent",
+    "active": true
+  }
+]
